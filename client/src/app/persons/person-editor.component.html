@@ -1,0 +1,65 @@
+
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+
+
+<h3 class="first">{{title}}</h3>
+
+<form [formGroup]="fbgroup" (ngSubmit)="onSubmit()">
+        <div class="ui-grid ui-grid-responsive ui-grid-pad ui-fluid" style="margin: 10px 0px">
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Name *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="name" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fbgroup.controls['name'].valid&&fbgroup.controls['name'].dirty">
+                        <i class="fa fa-close"></i>
+                        Name is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Mail *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="text" formControlName="mail" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fbgroup.controls['mail'].valid&&fbgroup.controls['mail'].dirty">
+                        <i class="fa fa-close"></i>
+                        Mail is required
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2">
+                    Age *:
+                </div>
+                <div class="ui-grid-col-6">
+                    <input pInputText type="number" formControlName="age" placeholder="Required"/>
+                </div>
+                <div class="ui-grid-col-4">
+                    <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fbgroup.controls['age'].valid&&fbgroup.controls['age'].dirty">
+                        <i class="fa fa-close"></i>
+                        <span *ngIf="fbgroup.controls['age'].errors['required']">Age is required</span>
+                    </div>
+                </div>
+            </div>
+            <div class="ui-grid-row">
+                <div class="ui-grid-col-2"></div>
+                <div class="ui-grid-col-2">
+                    <button pButton type="submit" icon="fa-check" label="Submit" [disabled]="!fbgroup.valid"></button>
+                </div>
+                <div class="ui-grid-col-2">
+                    <button pButton type="button" icon="fa-times" label="Cancel" (click)="onCancel()"></button>
+                </div>
+                <div class="ui-grid-col-4"></div>
+            </div>
+            <!-- div style="text-align:center;margin-top:20px">
+                {{diagnostic}}
+            </div-->
+        </div>
+</form>

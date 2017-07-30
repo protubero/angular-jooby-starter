@@ -1,0 +1,23 @@
+
+<p-growl [value]="msgs" sticky="sticky"></p-growl>
+
+<h3 class="first">Persons</h3>
+
+<p-dataTable [value]="persons">
+    <p-column field="name" header="Name"></p-column>
+    <p-column field="age" header="Age"></p-column>
+    <p-column field="email" header="EMail"></p-column>
+	<p-column styleClass="col-button">
+        <ng-template let-person="rowData" pTemplate="body">
+            <button type="button" pButton (click)="editPerson(person)" icon="fa-pencil-square-o"></button>
+            <button type="button" pButton (click)="deletePerson(person)" icon="fa-trash-o"></button>
+        </ng-template>
+    </p-column>
+    <p-footer>
+    	<div class="ui-helper-clearfix" style="width:100%">
+    		<button type="button" pButton icon="fa-plus" style="float:left" (click)="addPerson()" label="Add"></button>
+    	</div>
+    </p-footer>
+</p-dataTable>
+
+<p-confirmDialog header="Confirmation" icon="fa fa-question-circle" width="425"></p-confirmDialog>

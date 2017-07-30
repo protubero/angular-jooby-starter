@@ -1,0 +1,12 @@
+{
+  "/api": {
+    "target": "http://localhost:8080",
+    "secure": false
+  },
+  "/sock/*": {
+    "target": "http://localhost:8080",
+     "secure": false,
+    "ws": false,
+    "logLevel": "debug"
+  }
+}

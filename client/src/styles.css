@@ -1,0 +1,8 @@
+/* You can add global styles to this file, and also import other style files */
+body {
+    font-family: Roboto,Trebuchet MS,Arial,Helvetica,sans-serif;
+    font-weight: 400;
+    color: #404c51;
+    -webkit-font-smoothing: antialiased;
+    font-size: 1em;
+}

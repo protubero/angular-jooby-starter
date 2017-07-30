@@ -1,0 +1,8 @@
+FROM openjdk:8-jdk
+
+# reading deployed files into the image
+RUN mkdir /ajs && cd /ajs
+ADD . /ajs
+
+CMD ["/ajs/bin/ajs.sh"]
+WORKDIR /ajs
