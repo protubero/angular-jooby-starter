@@ -11,7 +11,7 @@ I'm using [jooby](https://github.com/jooby-project/jooby) on the server side as 
 1. You should have a running maven installation on your system
 1. To start the java server, execute `mvn jooby:run` at the server sub folder. The jooby server starts on port 8080. When opening (http://localhost:8080/api/persons), a json structure with some person data should show up.  
 1. Execute `npm update` at the client folder. NPM is looking for the modules defined in the package.json file and resolves all dependencies. This could take some time. A folder node_modules will be created which contains the JS libaries used.
-1. To start the client, execute `npm start` at the client folder, then open (http://localhost:4200 in your browser). Calls to the backend are routed to the jooby server, as defined in the package.conf.json file.
+1. To start the client, execute `npm start` at the client folder, then open (http://localhost:4200) in your browser. Calls to the backend are routed to the jooby server, as defined in the *proxy.conf.json* file.
 
 Now you have the development setup up and running.
 Recommended IDE: https://www.genuitec.com/products/angular-ide/
