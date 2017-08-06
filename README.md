@@ -33,7 +33,7 @@ Execute `docker build . -t ajs` in the project root folder.
 
 ### Build a distribution docker image
 
-Unpack a distribution into a folder. Go into that folder and execute `build . -t ajsimg`. When the iamge is built, it can be started with `docker run -ti ajsimg:latest`.
+Unpack a distribution into a folder. Go into that folder and execute `build . -t ajsimg`. When the image is built, it can be started with `docker run -ti ajsimg:latest`.
 
 
 
