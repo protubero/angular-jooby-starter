@@ -12,10 +12,7 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<jooby.version>1.1.3</jooby.version>
-		<h2.version>1.4.195</h2.version>
-    	<requery.version>1.2.0</requery.version>	
     	<build-helper-maven-plugin.version>1.9.1</build-helper-maven-plugin.version>
-    	<apt-maven-plugin.version>1.1.3</apt-maven-plugin.version>    	
 	</properties>
 	<build>
 		<plugins>
@@ -57,6 +54,39 @@
 				</executions>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.jooby</groupId>
+										<artifactId>
+											jooby-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.1.3,)
+										</versionRange>
+										<goals>
+											<goal>spec</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 	<dependencies>
@@ -87,18 +117,6 @@
 
 		<dependency>
 			<groupId>org.jooby</groupId>
-			<artifactId>jooby-filewatcher</artifactId>
-			<version>${jooby.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jooby</groupId>
-			<artifactId>jooby-pac4j</artifactId>
-			<version>${jooby.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jooby</groupId>
 			<artifactId>jooby-metrics</artifactId>
 			<version>${jooby.version}</version>
 		</dependency>
@@ -107,18 +125,6 @@
 			<groupId>org.jooby</groupId>
 			<artifactId>jooby-banner</artifactId>
 			<version>${jooby.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jooby</groupId>
-			<artifactId>jooby-requery</artifactId>
-			<version>${jooby.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>${h2.version}</version>
 		</dependency>
 
 		<dependency>
@@ -143,69 +149,4 @@
 		</dependency>
 	</dependencies>
 
-	<profiles>
-		<profile>
-			<id>requery</id>
-			<activation>
-				<file>
-					<exists>${basedir}${file.separator}src${file.separator}etc${file.separator}requery.activator</exists>
-				</file>
-			</activation>
-			<properties>
-				<requery-apt-file>requery-processor-${requery.version}.jar</requery-apt-file>
-				<requery-apt-dir>${settings.localRepository}/io/requery/requery/${requery.version}</requery-apt-dir>
-				<requery-apt-path>${requery-apt-dir}/${requery-apt-file}
-				</requery-apt-path>
-				<requery.output>src/main/generated</requery.output>
-			</properties>
-			<build>
-				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>build-helper-maven-plugin</artifactId>
-						<version>${build-helper-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<id>add-querydsl-source</id>
-								<phase>generate-sources</phase>
-								<goals>
-									<goal>add-source</goal>
-								</goals>
-								<configuration>
-									<sources>
-										<source>${requery.output}</source>
-									</sources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<!-- Requery -->
-					<plugin>
-						<groupId>com.mysema.maven</groupId>
-						<artifactId>apt-maven-plugin</artifactId>
-						<version>${apt-maven-plugin.version}</version>
-						<executions>
-							<execution>
-								<goals>
-									<goal>process</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${requery.output}</outputDirectory>
-									<processor>io.requery.processor.EntityProcessor</processor>
-									<logOnlyOnError>true</logOnlyOnError>
-								</configuration>
-							</execution>
-						</executions>
-						<dependencies>
-							<dependency>
-								<groupId>io.requery</groupId>
-								<artifactId>requery-processor</artifactId>
-								<version>${requery.version}</version>
-							</dependency>
-						</dependencies>
-					</plugin>
-				</plugins>
-			</build>
-		</profile>
-	</profiles>
 </project>

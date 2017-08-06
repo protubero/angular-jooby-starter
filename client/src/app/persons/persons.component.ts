@@ -3,7 +3,8 @@ import {HttpClient} from '@angular/common/http';
 import {Router} from '@angular/router';
 import {Message} from 'primeng/components/common/api';
 import {ConfirmDialogModule, ConfirmationService} from 'primeng/primeng';
-import {Person, PersonsService} from './persons.service';
+import {PersonsService} from './persons.service';
+import {Person} from '../model';
 
 @Component({
   selector: 'app-persons',
@@ -28,7 +29,7 @@ export class PersonsComponent implements OnInit {
   }
 
   editPerson(person: Person) {
-      this.router.navigate(['persons', person.id]);
+      this.router.navigate(['persons/edit', person.id]);
   }
 
   deletePerson(person: Person) {

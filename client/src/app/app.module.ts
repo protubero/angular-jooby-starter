@@ -15,11 +15,13 @@ import { PageNotFoundComponent } from './page-not-found.component';
 import { PersonsComponent } from './persons/persons.component';
 import { PersonsService } from './persons/persons.service';
 import { PersonEditorComponent } from './persons/person-editor.component';
+import { PersonDetailComponent } from './persons/person-detail.component';
 
 const appRoutes: Routes = [
   { path: 'persons', component: PersonsComponent },
-  { path: 'persons/:id', component: PersonEditorComponent },
   { path: 'persons/new', component: PersonEditorComponent },
+  { path: 'persons/:id', component: PersonDetailComponent },
+  { path: 'persons/edit/:id', component: PersonEditorComponent },
   { path: '',
     redirectTo: '/persons',
     pathMatch: 'full'
@@ -33,12 +35,13 @@ const appRoutes: Routes = [
     AppComponent,
     PersonsComponent,
     PersonEditorComponent,
+    PersonDetailComponent,
     PageNotFoundComponent
   ],
   imports: [
     RouterModule.forRoot(
       appRoutes,
-      { enableTracing: true } // <-- debugging purposes only
+     // { enableTracing: true } // <-- debugging purposes only
     ),
     BrowserModule,
     HttpClientModule,

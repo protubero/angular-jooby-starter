@@ -1,10 +1,14 @@
-
 <p-growl [value]="msgs" sticky="sticky"></p-growl>
 
 <h3 class="first">Persons</h3>
 
-<p-dataTable [value]="persons">
-    <p-column field="name" header="Name"></p-column>
+<p-dataTable [value]="persons" expandableRows="true">
+  	<p-column expander="true" styleClass="col-icon"></p-column>
+    <p-column field="name" header="Name">
+		<ng-template let-col let-person="rowData" pTemplate="body">
+            <a href="#" [routerLink]="['/persons', person.id]">{{person.name}}</a>
+        </ng-template>
+    </p-column>
     <p-column field="age" header="Age"></p-column>
     <p-column field="email" header="EMail"></p-column>
 	<p-column styleClass="col-button">
@@ -13,6 +17,9 @@
             <button type="button" pButton (click)="deletePerson(person)" icon="fa-trash-o"></button>
         </ng-template>
     </p-column>
+	<ng-template let-person pTemplate="rowexpansion">
+		<app-person-detail [person]="person" [showTitle]="false"></app-person-detail>
+	</ng-template>    
     <p-footer>
     	<div class="ui-helper-clearfix" style="width:100%">
     		<button type="button" pButton icon="fa-plus" style="float:left" (click)="addPerson()" label="Add"></button>

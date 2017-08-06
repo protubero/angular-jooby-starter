@@ -1,0 +1,22 @@
+<span *ngIf="showTitle">
+	<h3 style="vertical-align:middle">
+	  <i class="fa fa-user"></i> {{person?.name}}
+	</h3>
+</span>
+
+<table>
+<tr><td>Name</td><td>{{person?.name}}</td></tr>
+<tr><td>EMail</td><td>{{person?.email}}</td></tr>
+<tr><td>Age</td><td>{{person?.age}}</td></tr>
+</table>
+
+
+
+<span *ngIf="isRouted">
+	<br>
+	<a href="#" *ngIf="person" [routerLink]="['/persons/edit', person.id]">
+				Edit </a>
+
+	<br><br>
+	Browser navigation is working, use the browser back button!
+</span>

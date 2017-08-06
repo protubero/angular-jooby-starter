@@ -1,13 +1,12 @@
 package de.protubero.ajs;
 
 import java.io.File;
+import java.util.function.Supplier;
 
 import org.jooby.Jooby;
 import org.jooby.banner.Banner;
-import org.jooby.jdbc.Jdbc;
 import org.jooby.json.Jackson;
 import org.jooby.metrics.Metrics;
-import org.jooby.requery.Requery;
 import org.jooby.swagger.SwaggerUI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,9 +19,6 @@ import com.codahale.metrics.jvm.ThreadStatesGaugeSet;
 import com.typesafe.config.Config;
 
 import io.netty.util.internal.SystemPropertyUtil;
-import io.requery.EntityStore;
-import io.requery.Persistable;
-import io.requery.sql.TableCreationMode;
 import javaslang.control.Try;
 
 public class App extends Jooby {
@@ -36,8 +32,6 @@ public class App extends Jooby {
 
 		use(new Jackson());
 
-		use(new Jdbc());
-
 		String confFilePath = SystemPropertyUtil.get("ajsconf");
 		if (confFilePath != null) {
 			logger.info("using config file " + confFilePath);
@@ -50,15 +44,13 @@ public class App extends Jooby {
 			logger.warn("no config file found, use -Dajsconf=\"...\" to specify config file");
 		}
 		
-		/** Requery: */
-		use(new Requery(Models.DEFAULT).schema(TableCreationMode.CREATE));
+		bind(new PersonStore());
 
 		/** Save a new person on startup: */
 		onStart(registry -> {
 			Config config = require(Config.class);
-
-			EntityStore<Persistable, Person> store = require(EntityStore.class);
-
+			PersonStore store = require(PersonStore.class);
+			
 			config.getConfig("sampledata").getObjectList("data").forEach(c -> {
 				Config personConfig = c.toConfig();
 				Person person = new Person();
@@ -71,11 +63,8 @@ public class App extends Jooby {
 			});
 
 		});
-
-		on("prod", () -> {
-			//use(new Auth().basic("*", MyUsernamePasswordAuthenticator.class));
-		});
-
+		
+		
 		new SwaggerUI().filter(route -> {
 			return route.pattern().startsWith("/api");
 		}).install(this);
@@ -85,8 +74,7 @@ public class App extends Jooby {
 			@Override
 			protected Result check() throws Exception {
 				Try<Void> tTry = Try.run(() -> {
-					EntityStore<Persistable, Person> store = require(EntityStore.class);
-					store.count(Person.class);
+					// Here you should do a quick test, if the app is basically healthy, i.e. check the db connection  
 				});
 				if (tTry.isFailure()) {
 					return HealthCheck.Result.unhealthy(tTry.getCause());

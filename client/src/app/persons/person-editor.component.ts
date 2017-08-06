@@ -3,7 +3,8 @@ import {Validators, FormControl, FormGroup, FormBuilder} from '@angular/forms';
 import {Location} from '@angular/common';
 import {Message} from 'primeng/components/common/api';
 import {ActivatedRoute, Router, ParamMap, UrlSegment} from '@angular/router';
-import {Person, PersonsService} from './persons.service';
+import {PersonsService} from './persons.service';
+import {Person} from '../model';
 import 'rxjs/add/operator/switchMap';
 import {Observable} from 'rxjs/Observable';
 

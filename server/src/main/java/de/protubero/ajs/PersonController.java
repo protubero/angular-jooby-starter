@@ -1,6 +1,7 @@
 package de.protubero.ajs;
 
 import java.util.List;
+import java.util.Optional;
 
 import org.jooby.Result;
 import org.jooby.Results;
@@ -19,8 +20,6 @@ import org.slf4j.LoggerFactory;
 import com.google.inject.Inject;
 import com.google.inject.name.Named;
 
-import io.requery.EntityStore;
-import io.requery.Persistable;
 
 /**
  * http://www.restapitutorial.com/lessons/httpmethods.html
@@ -33,12 +32,12 @@ import io.requery.Persistable;
 @Produces("application/json")
 public class PersonController {
 
-	final Logger logger = LoggerFactory.getLogger(getClass());
+	final Logger logger = LoggerFactory.getLogger(getClass());	
 	
-	private EntityStore<Persistable, Person> store;
+	private PersonStore store;
 	
 	@Inject
-	private PersonController(EntityStore<Persistable, Person> store) {
+	private PersonController(PersonStore store) {
 		this.store = store;
 	}
 	
@@ -47,9 +46,7 @@ public class PersonController {
      */
 	@GET
     public List<Person> list() {
-      return store.select(Person.class)
-          .get()
-          .toList();
+      return store.selectAll();
     }
 
     /**
@@ -57,11 +54,13 @@ public class PersonController {
      */
 	@GET
 	@Path("/:id")
-	public Person findById(@Named("id") Integer id) throws Throwable {
-      return store.select(Person.class)
-          .where(Person.ID.eq(id.intValue()))
-          .get()
-          .first();
+	public Result findById(@Named("id") Integer id) throws Throwable {
+      Optional<Person> person = store.selectById(id.intValue());
+      if (!person.isPresent()) {
+		 return Results.with(404);
+      } else {
+    	 return Results.ok(person.get()); 
+      }
     }
 
 	@POST
@@ -74,7 +73,7 @@ public class PersonController {
 	@DELETE
 	@Path("/:id")
 	public Result delete(@Named("id") Integer id) throws Throwable {
-		if (store.delete().from(Person.class).where(Person.ID.eq(id)).get().call() == 0) {
+		if (!store.delete(id)) {
 			return Results.with(404);
 		} else {
 			return Results.ok();
@@ -84,16 +83,14 @@ public class PersonController {
 	@PATCH
 	@Path("/:id")
 	@Consumes("application/json")
-	public Person update(@Named("id") Integer id, @Body Person person) throws Throwable {
-		Person existingPerson = findById(id);
-		
-		existingPerson.setAge(person.getAge());
-		existingPerson.setName(person.getName());
-		existingPerson.setEmail(person.getEmail());
-		
-		store.update(existingPerson);
-		
-		return existingPerson;
+	public Result update(@Named("id") Integer id, @Body Person person) throws Throwable {
+	    Optional<Person> personToUpdate = store.selectById(id.intValue());
+		if (!personToUpdate.isPresent()) {
+			return Results.with(404);
+		} else {
+			personToUpdate.get().updateWith(person);
+			return Results.ok(personToUpdate.get());
+		}	
 	}
 	
 }
