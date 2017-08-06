@@ -1,5 +1,11 @@
 package de.protubero.ajs;
 
+/**
+ * Simple person class for demo purposes.
+ * 
+ * @author MSchaefer
+ *
+ */
 public class Person {
 
 	private int id;
