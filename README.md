@@ -24,16 +24,15 @@ It contains a maven assembly descriptor that packs together the server and clien
 
 The angular client will then be generated in production mode as a set of files located in the `dist/client` folder. These files are then packaged into a jar file that is the artifact of that module.
 	
-## Playing around with docker
+## Playing around with docker (work in progress)
 
-### Build distribution with docker (work in progress)
+### Build distribution with docker
 
 Execute `docker build . -t ajs` in the root folder.
 
-
 ### Build a distribution docker image
 
-Unpack a distribution into a folder. Go into that folder and execute `build . -t ajsimg`. When the iamge is built, it can be started with `docker run -d ajsimg`.
+Unpack a distribution into a folder. Go into that folder and execute `build . -t ajsimg`. When the iamge is built, it can be started with `docker run -ti ajsimg:latest`.
 
 
 
