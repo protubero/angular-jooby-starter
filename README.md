@@ -21,7 +21,7 @@ Recommended IDE: https://www.genuitec.com/products/angular-ide/
 ## Build distribution  
  
 The project is structured as a multi-module maven project. Beside the server and client module there is a third module named distribution. 
-It contains a maven assembly descriptor that packs together the server and client into one zip file and a tarball. To build the distribution, execute `mvn package` in the root folder.
+It contains a maven assembly descriptor that packs together the server and client into one zip file and a tarball. To build the distribution, execute `mvn package` in the root folder. The server is accessible via (http://localhost:8080).
 
 The angular client will then be generated in production mode as a set of files located in the *dist/client* folder. These files are then packaged into a jar file that is the artifact of that module.
 	
