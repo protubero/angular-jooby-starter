@@ -2,21 +2,12 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>de.protubero</groupId>
-	<artifactId>parent</artifactId>
+	<artifactId>ajs-aggregate</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>pom</packaging>
-	<name>Parent</name>	
-		
-	<properties>
-		<application.class>de.protubero.ajs.App</application.class>
-	</properties>	
-		
-	<modules>
-		<module>client</module>
-		<module>server</module>
-		<module>distribution</module>
-	</modules>
-	
+	<name>Aggregate</name>	
+				
+   
 	<build>
     <pluginManagement>
       <plugins>
@@ -31,5 +22,12 @@
         </plugin>
       </plugins>
     </pluginManagement>
-  </build>
+  </build>			
+				
+	<modules>
+		<module>client</module>
+		<module>server</module>
+		<module>distribution</module>
+	</modules>
+	
 </project>

@@ -28,7 +28,7 @@
   </moduleSets>
 	<fileSets>
 		<fileSet>
-		  	<directory>src/main/resources</directory>
+		  	<directory>target/stork</directory>
 			<outputDirectory></outputDirectory>
  			<filtered>true</filtered>			
 		</fileSet>
