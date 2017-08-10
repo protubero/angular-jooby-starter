@@ -6,7 +6,7 @@ I'm using [jooby](https://github.com/jooby-project/jooby) on the server side as 
 ## Quick start
 
 1. Checkout the starter project with `git clone https://github.com/protubero/angular-jooby-starter.git`
-1. Make sure you have a Node and NPM, the node package manager, installed on your system. Minimum version of Node is 4, minimum version of NPM is 3. It is sufficient to intall Node on your system since NPM is installed together with Node.   
+1. Make sure you have a Node and NPM, the node package manager, installed on your system. Minimum version of Node is 4, minimum version of NPM is 3. It is sufficient to install Node on your system since NPM is installed together with Node.   
 1. Install [Angular CLI](https://github.com/angular/angular-cli)
 1. You should have a running maven installation on your system
 1. To start the java server, execute `mvn jooby:run` at the *server* sub folder. The jooby server starts on port 8080. When opening (http://localhost:8080/api/persons), a json structure with some person data should show up. All available URLs are listed on the console when the server starts up. 
