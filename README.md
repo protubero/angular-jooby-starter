@@ -25,37 +25,34 @@ It contains a maven assembly descriptor that packs together the server and clien
 
 The angular client will then be generated in production mode as a set of files located in the *dist/client* folder. These files are then packaged into a jar file that is the artifact of that module.
 	
-## Playing around with docker (work in progress)
-
-### Building the distribution with docker
-
-Execute `docker build . -t ajs` in the project root folder.
 
 
 ## Coverage check of Angular features
 
-https://angular.io/guide/architecture
+see https://angular.io/guide/architecture
 
-Building blocks
-    Modules
-    Components
-    Templates
-    Metadata
-    Data binding
-    Directives
-    Services
-    Dependency injection
+Subject | Covered by ...
+------------ | -------------
+Modules|
+Components|
+Templates|
+Metadata|
+Data binding|
+Directives|
+Services|
+Dependency injection|
 
-	
-    Animations: 
-    Change detection
-    Events
-    Forms
-    HTTP
-    Lifecycle hooks
-    Pipes
-    Router
-    Testing
+Subject | Covered by ...
+------------ | -------------
+Animations|
+Change detection|
+Events|
+Forms|
+HTTP|
+Lifecycle hooks|
+Pipes|
+Router|
+Testing|
 
 
 
