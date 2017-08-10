@@ -31,11 +31,31 @@ The angular client will then be generated in production mode as a set of files l
 
 Execute `docker build . -t ajs` in the project root folder.
 
-### Build a distribution docker image
 
-Unpack a distribution into a folder. Go into that folder and execute `build . -t ajsimg`. When the image is built, it can be started with `docker run -ti ajsimg:latest`.
+## Coverage check of Angular features
 
+https://angular.io/guide/architecture
 
+Building blocks
+    Modules
+    Components
+    Templates
+    Metadata
+    Data binding
+    Directives
+    Services
+    Dependency injection
+
+	
+    Animations: 
+    Change detection
+    Events
+    Forms
+    HTTP
+    Lifecycle hooks
+    Pipes
+    Router
+    Testing
 
 
 

@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
 		<groupId>de.protubero</groupId>
-		<artifactId>ajs-aggregate</artifactId>
+		<artifactId>ajs-root</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</parent>
 	
@@ -12,10 +12,6 @@
 	<packaging>pom</packaging>
 	<name>angular-jooby-starter</name>
 	<description>This project generates the distribution package.</description>
-	
-	<properties>
-		<application.class>de.protubero.ajs.App</application.class>		
-	</properties>
 	
 	<build>
 		<plugins>

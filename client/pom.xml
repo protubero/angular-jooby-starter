@@ -2,7 +2,7 @@
   <modelVersion>4.0.0</modelVersion>
    <parent>
     <groupId>de.protubero</groupId>
-    <artifactId>ajs-aggregate</artifactId>
+    <artifactId>ajs-root</artifactId>
     <version>0.0.1-SNAPSHOT</version>
   </parent>
   <artifactId>ajs-client</artifactId>
