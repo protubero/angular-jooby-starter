@@ -26,7 +26,7 @@ To start both server, execute all of the following steps:
 1. You should have a running maven installation on your system
 1. Open a terminal and change directory to the *server* sub folder. Then execute `mvn jooby:run`. The jooby server starts on port 8080. When opening (http://localhost:8080/api/persons), a json structure with some person data should show up. All available URLs are listed on the console when the server starts up. 
 1. Open a second terminal and change directory to the *client* sub folder. Before we can start the Angular development server we have to resolve the dependencies by executing `npm update` (or `npm install`). NPM is looking for the modules defined in the *package.json* file and resolves all dependencies. This could take some time. A folder *node_modules* will be created which contains the JS libaries used, this is the .m2 in the JS world.
-1. To start the client, execute `npm start` in the second terminal. 
+1. To start the client server, execute `npm start` in the second terminal. 
 
 Now you have the development setup up and running. Open (http://localhost:4200) in your browser to load the application.
 
@@ -34,7 +34,13 @@ Recommended IDE: https://www.genuitec.com/products/angular-ide/
  
 
 ## Build distribution  
- 
+
+When you are happy with your work you will probably install it on a server or forward it to a friend. What we want is the application packaged e.g. as a ZIP file. After unpacking it into the file system, it should be sufficient to click on a start shell script or .bat file. The only precondition should be an installed JRE.
+
+To create such an distribution package, simply execute `mvn package` or `mvn install` in the root folder of the project. The latter command will store it additionally in the maven repository. The distribution files can be found in the */distribution/target* folder.
+In contrast to other maven builds, there are preconditions that must be met before the build process can succeed...  blabla ... more to say but must sleep now ... 
+
+
 The project is structured as a multi-module maven project. Beside the server and client module there is a third module named distribution. 
 It contains a maven assembly descriptor that packs together the server and client into one zip file and a tarball. To build the distribution, execute `mvn package` in the root folder. The server is accessible via (http://localhost:8080).
 
