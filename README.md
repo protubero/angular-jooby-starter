@@ -9,8 +9,10 @@ The client part of the project is based on the foundations of the [Angular CLI](
 
 - I'm using [PrimeNG](https://www.primefaces.org/primeng/#/) as UI lib for a reason. I'm exploring ways for the corporate java web developer who is used to work with JSF. While lower-level libs like Bootstrap are fine if you are a frontend developer, most corporate java developers prefer higher level abstractions as provided by PrimeNG. PrimeFaces is nowadays the dominant implementation of the JSF standard
 - The angular project is a maven module as well. Only a simple maven POM file has been added to the usual angular files. The angular client will then be generated in production mode as a set of files located in the *dist/client* folder. These files are then packaged into a jar file that is the artifact of that module. The server reads these files via *class.getResourceAsStream* from the classpath. This is, what the Jooby module *AngularClient* does. There are other ways to get the client and the server together. 
-  - The client could be part of the server module, providing the client files as maven resources. 
-
+  - The client could be part of the server module, providing the client files as maven resources. I had a feeling that this setup confuses IDEs. I also have the feeling that the client should not be a subordinate of the server, they should be partner :)
+  - Jooby is already able to serve static assets located in the file system. To use this feature, i also had to place the client within the server module. Secondly prefer to have the client files in a cozy, versioned jar file as opposed to the cold and windy filesystem, threatened by unforeseen modifications.
+  - It is quite common to use a proxy server like Apache HTTPD to serve the static files and route the other requests to a backend server. There is nothing wrong with this approach. I'm just aiming at an target audience that wants to evaluate Angular an therefore prefers the setup to be as simple as possible.
+- I'm fully aware that i broke the build system rules - for now. This build depends on the environment, i.e. on the installed node/npm/cli. I could have used https://github.com/eirslett/frontend-maven-plugin, but i opted against it. I don't think that this could create problems for the intended use but needs re-evaluation if one creates a production-grade application.
 
 ## Quick start
 
