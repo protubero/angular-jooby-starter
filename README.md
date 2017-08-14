@@ -7,7 +7,7 @@ The client part of the project is based on the foundations of the [Angular CLI](
 
 ## Target audience
 
-You are an experienced java developer with at least some experience in the development of web applications with java. Then you heard of that shiny little thing called Angular. You sacrificed your free time to get to explore this new universe and get a basic understanding of it. But you still like your java backends. You feel no need to replace it with a Node JS based solution. Your are looking for something cool and smooth. Thats when you discovered jooby. Now it is the perfect moment to make profit out of this starter. It should help you personally to fast create little web applications with angular and jooby for fun and experience. It is not intended as a starting point for big commercial server applications.
+You are an experienced java developer with at least some experience in the development of web applications with java. Then you heard of that shiny little thing called Angular. You sacrificed your free time to get to explore this new universe and get a basic understanding of it. But you still like your java backends. You feel no need to replace it with a Node JS based solution. Your are looking for something cool and smooth. Thats when you discovered jooby. Now it is the perfect moment to make profit out of this starter. It should help you personally to create small web applications fast with angular and jooby for fun and experience. It is not intended as a starting point for big commercial server applications.
 
 
 ## Design decisions
