@@ -16,7 +16,7 @@
                 <div class="ui-grid-col-4">
                     <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fbgroup.controls['name'].valid&&fbgroup.controls['name'].dirty">
                         <i class="fa fa-close"></i>
-                        Name is required
+                        Name is required with a minimum of 3 chars
                     </div>
                 </div>
             </div>
@@ -45,6 +45,8 @@
                     <div class="ui-message ui-messages-error ui-corner-all" *ngIf="!fbgroup.controls['age'].valid&&fbgroup.controls['age'].dirty">
                         <i class="fa fa-close"></i>
                         <span *ngIf="fbgroup.controls['age'].errors['required']">Age is required</span>
+                        <span *ngIf="fbgroup.controls['age'].errors['min']">Minimum:18</span>
+                        <span *ngIf="fbgroup.controls['age'].errors['max']">Maximum:99</span>
                     </div>
                 </div>
             </div>

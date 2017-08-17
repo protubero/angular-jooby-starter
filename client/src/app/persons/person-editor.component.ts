@@ -34,7 +34,7 @@ export class PersonEditorComponent implements OnInit, OnChanges {
     this.fbgroup = this.fb.group({
       'name': new FormControl('', [Validators.required, Validators.minLength(3)]),
       'mail': new FormControl('', [Validators.required]),
-      'age': new FormControl('', [Validators.required])
+      'age': new FormControl('', [Validators.required, Validators.min(18), Validators.max(99)])
     });
 
     this.route.url.subscribe(u => {
