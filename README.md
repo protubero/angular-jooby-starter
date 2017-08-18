@@ -43,8 +43,6 @@ Recommended IDE: https://www.genuitec.com/products/angular-ide/
 When you are happy with your work you will probably install it on a server or forward it to a friend. What we want is the application packaged e.g. in a ZIP file. After unpacking it into the file system, it should be sufficient to click on a start shell script or .bat file. The only precondition should be an installed JRE.
 
 To create such an distribution package, simply execute `mvn package` or `mvn install` in the root folder of the project. The latter command will store it additionally in the maven repository. The distribution files can be found in the */distribution/target* folder.
-In contrast to other maven builds, there are preconditions that must be met before the build process can succeed...  blabla ... more to say but must sleep now ... 
-
 
 The project is structured as a multi-module maven project. Beside the server and client module there is a third module named distribution. 
 It contains a maven assembly descriptor that packs together the server and client into one zip file and a tarball. To build the distribution, execute `mvn package` in the root folder. The server is accessible via (http://localhost:8080).
