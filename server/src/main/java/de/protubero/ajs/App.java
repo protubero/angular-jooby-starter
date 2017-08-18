@@ -59,6 +59,7 @@ public class App extends Jooby {
 		// display a banner on the console when the server starts up
 		use(new Banner(TITLE).font("slant"));
 
+		
 		// Include Jackson, providing the JSON parser and renderer
 		use(new Jackson());
 
