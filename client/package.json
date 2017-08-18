@@ -1,7 +1,7 @@
 {
-  "name": "hello-world",
-  "version": "0.0.0",
-  "license": "MIT",
+  "name": "angular-jooby-starter",
+  "version": "0.1.0",
+  "license": "LicenseRef-LICENSE",
   "scripts": {
     "ng": "ng",
     "start": "ng serve --proxy-config proxy.conf.json",
