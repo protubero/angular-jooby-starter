@@ -62,16 +62,12 @@
 				</executions>
 			</plugin>
 		</plugins>
+		
 	</build>
+	
 	<profiles>
 		<profile>
 			<id>dev</id>
-			<activation>
-				<property>
-					<name>env</name>
-					<value>dev</value>
-				</property>
-			</activation>
 			<build>
 				<plugins>
 					<plugin>
@@ -101,10 +97,7 @@
 		<profile>
 			<id>prod</id>
 			<activation>
-				<property>
-					<name>env</name>
-					<value>prod</value>
-				</property>
+			    <activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
 				<plugins>
@@ -124,7 +117,6 @@
 								<configuration>
 									<arguments>run-script prod</arguments>
 								</configuration>
-								<phase>compile</phase>
 							</execution>
 						</executions>
 					</plugin>
