@@ -16,8 +16,9 @@ You are an experienced java developer with at least some experience in the devel
 - The angular project is a maven module as well. Only a simple maven POM file has been added to the usual angular files. The angular client will then be generated in production mode as a set of files located in the *dist/client* folder. These files are then packaged into a jar file that is the artifact of that module. The server reads these files via *class.getResourceAsStream* from the classpath. This is, what the Jooby module *AngularClient* does. There are other ways to get the client and the server together. 
   - The client could be part of the server module, providing the client files as maven resources. I had a feeling that this setup confuses IDEs. I also have the feeling that the client should not be a subordinate of the server, they should be partner :)
   - Jooby is already able to serve static assets located in the file system. To use this feature, i also had to place the client within the server module. Secondly prefer to have the client files in a cozy, versioned jar file as opposed to the cold and windy filesystem, threatened by unforeseen modifications.
-  - It is quite common to use a proxy server like Apache HTTPD to serve the static files and route the other requests to a backend server. There is nothing wrong with this approach. I'm just aiming at an target audience that wants to evaluate Angular an therefore prefers the setup to be as simple as possible.
+  - It is quite common to use a proxy server like Apache HTTPD to serve the static files and route the other requests to a backend server. There is nothing wrong with this approach. I'm just aiming at an target audience that wants to evaluate Angular and therefore prefers the setup to be as simple as possible.
 - I'm using https://github.com/eirslett/frontend-maven-plugin now to better integrate the nodejs world with maven.
+- BYOPT a.k.a Bring Your Own Persistence Technology. The starter works without database in order to focus on the core integration aspects. Further experiments (Kotlin, Database, ...) will happen in cloned repos.
 
 ## Quick start
 
