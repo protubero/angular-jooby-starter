@@ -54,7 +54,7 @@ The distribution files can be found in the */distribution/target* folder.
 
 ## Environment-independent Build
 
-Ideally maven builds should be independent from their build environment, apart from deliberate dependencies. Building the distribution should work out-of-the-box, e.g. on a jenkins build server. The inclusion of frontend technology makes this difficult to achieve. The frontend-maven-plugin helps by handling the node/npm issues in the background. To check, if the build is really independent, i've added a simple dockerfile, deriving from the maven-3.5 docker image. Build the image by executing `docker build . --tag ajs` in the project root folder. Then execute it with `docker run -ti --rm -p 8080:8080 -p 4200:4200 ajs`. A shell opens where you can test the build in an isolated environment. You're working on a copy of the project files. Updated files will not be visible within the image!
+Ideally maven builds should be independent from their build environment, apart from deliberate dependencies. Building the distribution should work out-of-the-box, e.g. on a jenkins build server. The inclusion of frontend technology makes this difficult to achieve. The frontend-maven-plugin helps by handling the node/npm issues in the background. To check, if the build is really independent, i've added a simple dockerfile, deriving from the maven-3.5 docker image. Build the image by executing `docker build . --tag ajs` in the project root folder. Then execute it with `docker run -ti --rm -p 8080:8080 -p 4200:4200 ajs`. A shell opens where you can test the build in an isolated environment. You're working on a copy of the project files. Updated files will not be visible within the container!
 
 
 
