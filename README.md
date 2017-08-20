@@ -48,7 +48,14 @@ Recommended IDE: https://www.genuitec.com/products/angular-ide/
 
 When you are happy with your work you will probably install it on a server or forward it to a friend. What we want is the application packaged e.g. in a ZIP file. After unpacking it into the file system, it should be sufficient to click on a start shell script or .bat file. The only precondition should be an installed JRE.
 
-To create such an distribution package, simply execute `mvn package` or `mvn install` in the root folder of the project. The latter command will store it additionally in the maven repository.  The distribution files can be found in the */distribution/target* folder.
+To create such an distribution package, simply execute `mvn package` in the root folder of the project. The maven build process first executes `mvn package` on the client module. The artifact of the client module is a jar containing all html/js/css files which make up the angular application.
+
+The distribution files can be found in the */distribution/target* folder.
+
+## Environment-independent Build
+
+Ideally maven builds should be independent from their build environment, apart from deliberate dependencies. Building the distribution should work out-of-the-box, e.g. on a jenkins build server. The inclusion of frontend technology makes this difficult to achieve. The frontend-maven-plugin helps by handling the node/npm issues in the background. To check, if the build is really independent, i've added a simple dockerfile, deriving from the maven-3.5 docker image. Build the image by executing `docker build . --tag ajs` in the project root folder. Then execute it with `docker run -ti --rm -p 8080:8080 -p 4200:4200 ajs`. A shell opens where you can test the build in an isolated environment. You're working on a copy of the project files. Updated files will not be visible within the image!
+
 
 
 	
