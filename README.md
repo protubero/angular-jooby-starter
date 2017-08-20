@@ -27,11 +27,11 @@ During development two servers are running in parallel. One is the jooby server 
 
 **Preparation** Checkout the starter project with `git clone https://github.com/protubero/angular-jooby-starter.git`
 
-**Start Jooby Server** Open a terminal and change directory to the *server* sub folder. Then execute `mvn jooby:run`. The jooby server starts on port 8080. When opening (http://localhost:8080/api/persons), a json structure with some person data should show up. All available URLs are listed on the console when the server starts up. 
+**Start Jooby Server** Open a terminal and change directory to the *server* sub folder. Then execute `mvn jooby:run`. The jooby server starts on port 8080. When opening http://localhost:8080/api/persons, a json structure with some person data should show up. All available URLs are listed on the console when the server starts up. 
 
 **Start Angular Development Server** Open a second terminal and change directory to the *client* sub folder. To start the angular development server, execute `mvn compile -P dev`. To stop the server, it might be necessary to close the terminal window.
 
-Now you have the development setup up and running. Open (http://localhost:4200) in your browser to load the application.
+Now you have the development setup up and running. Open http://localhost:4200 in your browser to load the application.
 
 
 The frontent-maven-plugin does all the necessary interaction with node/npm. It downloads nodejs locally into the */client/node* folder and handles the dependency resolution automatically. If you want to drive by yourself: 
@@ -48,7 +48,7 @@ Recommended IDE: https://www.genuitec.com/products/angular-ide/
 
 When you are happy with your work you will probably install it on a server or forward it to a friend. What we want is the application packaged e.g. in a ZIP file. After unpacking it into the file system, it should be sufficient to click on a start shell script or .bat file. The only precondition should be an installed JRE.
 
-To create such an distribution package, simply execute `mvn package` in the root folder of the project. The maven build process first executes `mvn package` on the client module. The artifact of the client module is a jar containing all html/js/css files which make up the angular application.
+To create such an distribution package, simply execute `mvn clean package` in the root folder of the project. The maven build process first executes `mvn clean package` on the client module. The artifact of the client module is a jar containing all html/js/css files which make up the angular application.
 
 The distribution files can be found in the */distribution/target* folder.
 
