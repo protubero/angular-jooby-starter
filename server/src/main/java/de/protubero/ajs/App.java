@@ -41,7 +41,7 @@ import com.codahale.metrics.jvm.MemoryUsageGaugeSet;
 import com.codahale.metrics.jvm.ThreadStatesGaugeSet;
 import com.typesafe.config.Config;
 
-import javaslang.control.Try;
+import io.vavr.control.Try;
 
 /**
  * 

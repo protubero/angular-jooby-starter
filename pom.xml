@@ -5,7 +5,7 @@
 	<parent>
 		<groupId>org.jooby</groupId>
 		<artifactId>jooby-project</artifactId>
-		<version>1.1.3</version>
+		<version>1.2.3</version>
 		<relativePath></relativePath>		
 	</parent>	
 	
@@ -16,7 +16,7 @@
 	<name>AJS Root</name>	
 				 
 	<properties>
-		<jooby.version>1.1.3</jooby.version>
+		<jooby.version>1.2.3</jooby.version>
 		<application.class>de.protubero.ajs.App</application.class>		
 	</properties>
 				 
@@ -25,7 +25,7 @@
       <plugins>
         <plugin>
           <artifactId>maven-assembly-plugin</artifactId>
-          <version>3.0.0</version>
+          <version>3.1.0</version>
           <configuration>
             <descriptors>
               <descriptor>assembly.xml</descriptor>

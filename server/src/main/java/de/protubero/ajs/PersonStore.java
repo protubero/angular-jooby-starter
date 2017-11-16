@@ -29,7 +29,7 @@ package de.protubero.ajs;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-import javaslang.collection.List;
+import io.vavr.collection.List;
 
 /**
  * Simple collection to hold the person objects. If it looks unfamiliar,

@@ -44,7 +44,13 @@
 		<dependency>
 			<groupId>commons-io</groupId>
 			<artifactId>commons-io</artifactId>
-			<version>2.5</version>
+			<version>2.6</version>
+		</dependency>
+
+		<dependency>
+		    <groupId>io.vavr</groupId>
+		    <artifactId>vavr</artifactId>
+		    <version>0.9.1</version>
 		</dependency>
 		
 		<!-- Tests -->
@@ -58,7 +64,7 @@
 		<dependency>
 			<groupId>io.rest-assured</groupId>
 			<artifactId>rest-assured</artifactId>
-			<version>3.0.1</version>
+			<version>3.0.5</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
