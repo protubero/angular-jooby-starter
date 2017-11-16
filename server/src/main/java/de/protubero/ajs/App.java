@@ -27,10 +27,10 @@
 package de.protubero.ajs;
 
 import org.jooby.Jooby;
+import org.jooby.apitool.ApiTool;
 import org.jooby.banner.Banner;
 import org.jooby.json.Jackson;
 import org.jooby.metrics.Metrics;
-import org.jooby.swagger.SwaggerUI;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -85,10 +85,13 @@ public class App extends Jooby {
 		});
 		
 		// provide swagger API, but only for the API that is used by the client
-		new SwaggerUI().filter(route -> {
-			return route.pattern().startsWith("/api");
-		}).install(this);
+	   use(new ApiTool()
+			     .swagger("/swagger")
+			     .raml("/raml")
+			     .filter(route -> route.pattern().startsWith("/api/"))
+			   );
 
+		
 		// provide health checks services
 		use(new Metrics().request().threadDump().ping().healthCheck("db", new HealthCheck() {
 

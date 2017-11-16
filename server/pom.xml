@@ -9,6 +9,22 @@
 
 	<artifactId>ajs-server</artifactId>
 
+	<build>
+		<plugins>
+			<plugin>
+			  <groupId>org.jooby</groupId>
+			  <artifactId>jooby-maven-plugin</artifactId>
+			  <executions>
+			    <execution>
+			      <goals>
+			        <goal>apitool</goal>
+			      </goals> 
+			    </execution> 
+			  </executions>
+			</plugin>			
+		</plugins>
+	</build>
+
 	<dependencies>
 		<!-- Server -->
 		<dependency>
@@ -24,9 +40,9 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.jooby</groupId>
-			<artifactId>jooby-swagger</artifactId>
-			<version>${jooby.version}</version>
+		 <groupId>org.jooby</groupId>
+		 <artifactId>jooby-apitool</artifactId>
+		 <version>${jooby.version}</version>
 		</dependency>
 
 		<dependency>
