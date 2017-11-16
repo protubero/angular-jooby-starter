@@ -21,7 +21,7 @@ export class PersonsService {
 
   submit(person: Person): Observable<String> {
     console.log('Saving person ' + JSON.stringify(person));
-    return this.http.post('/api/persons', person);
+    return this.http.post<String>('/api/persons', person);
   }
 
   remove(id: number) {
